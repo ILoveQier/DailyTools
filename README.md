@@ -6,3 +6,4 @@
 # DailyTools
 record daily tools to enhance experience of devlopment
 1. WaitingQueue
+2. PriorityQueue

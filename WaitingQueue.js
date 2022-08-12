@@ -3,7 +3,7 @@
  * @Author: wangchao
  * @Date: 2022-08-12 14:33:50
  */
-export class WaitingQueue {
+class WaitingQueue {
   // 传递等待时间 默认一秒
   constructor(waitingTime = 1) {
     this.isBusy = false;
