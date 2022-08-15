@@ -37,11 +37,11 @@ class PriorityQueue {
       this.arr.push(item)
     }
   }
-  // 取出最优先的副本
+  // 取出最优先的副本 最大堆
   pick() {
     return this.arr[0]
   }
-  // 取出最末尾的副本
+  // 取出最末尾的副本 最小堆
   pickLast() {
     return this.arr[this.size() - 1]
   }
