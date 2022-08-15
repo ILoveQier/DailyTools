@@ -5,14 +5,21 @@
  */
 class PriorityQueue {
   arr = []
+
   // rules 配置优先排列规则
   // limit 限制队列长度
-  constructor(rules = () => { }, limit = Infinity) {
+  // isDuplicated 是否入队去重
+  constructor(rules = () => { }, conditions = {}) {
+    const { limit = Infinity, isDuplicated = false } = conditions
     this.limit = limit
+    this.isDuplicated = isDuplicated
     this.rules = rules
   }
   // 入队
   inqueue(item) {
+    if (this.isDuplicated) {
+      if (this.arr.includes(item)) return
+    }
     for (let i = 0; i < this.arr.length; i++) {
       // 根据排列规则进入优先队列
       if (this.rules(this.arr[i], item)) {
@@ -34,6 +41,10 @@ class PriorityQueue {
   pick() {
     return this.arr[0]
   }
+  // 取出最末尾的副本
+  pickLast() {
+    return this.arr[this.size() - 1]
+  }
   // 出队并返回
   dequeue() {
     return this.arr.shift()
@@ -47,7 +58,7 @@ class PriorityQueue {
 }
 
 // how to use
-let pq = new PriorityQueue((prev, cur) => cur > prev, 3)
+let pq = new PriorityQueue((prev, cur) => cur > prev)
 pq.inqueue(3)
 pq.inqueue(13)
 pq.inqueue(5)
