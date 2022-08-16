@@ -16,7 +16,7 @@ class PriorityQueue {
     this.rules = rules
   }
   // 入队
-  inqueue(item) {
+  enqueue(item) {
     if (this.isDuplicated) {
       if (this.arr.includes(item)) return
     }
@@ -49,6 +49,9 @@ class PriorityQueue {
   dequeue() {
     return this.arr.shift()
   }
+  isEmpty(){
+    return this.arr.length === 0
+  }
   size() {
     return this.arr.length
   }
@@ -59,15 +62,15 @@ class PriorityQueue {
 
 // how to use
 let pq = new PriorityQueue((prev, cur) => cur > prev)
-pq.inqueue(3)
-pq.inqueue(13)
-pq.inqueue(5)
-pq.inqueue(1)
+pq.enqueue(3)
+pq.enqueue(13)
+pq.enqueue(5)
+pq.enqueue(1)
 console.log(pq.show());
 let pq1 = new PriorityQueue((prev, cur) => cur.id > prev.id, 4)
 let arr = [{ id: 1, name: '小一' }, { id: 4, name: '里斯' }, { id: 5, name: '王五' }, { id: 3, name: '张三' }, { id: 7, name: '琪琪' }]
 arr.forEach(item => {
-  pq1.inqueue(item)
+  pq1.enqueue(item)
 })
 console.log(pq1.show());
 
